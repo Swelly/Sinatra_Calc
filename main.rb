@@ -57,3 +57,9 @@ get '/calc/divide/:first/:second' do
   @second = params[:second].to_i
   return (@first / @second).to_s
 end
+
+get '/oh_ahoy/:name' do
+  @name = params[:name]
+  #returns [erb] template named ahoy
+  erb(:ahoy)
+end
