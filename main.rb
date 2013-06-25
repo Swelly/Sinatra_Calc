@@ -59,7 +59,34 @@ get '/calc/divide/:first/:second' do
 end
 
 get '/oh_ahoy/:name' do
+  @answer_to_universe = 42
   @name = params[:name]
   #returns [erb] template named ahoy
   erb(:ahoy)
+end
+
+get '/calc/:first/:operation/:second' do
+  @first = params[:first].to_f
+  @operation = params[:operation]
+  @second = params[:second].to_f
+  @result = case @operation
+  when "sum" then @first + @second
+  when "difference" then @first - @second
+  when "product" then @first  * @second
+  when "quotient" then @first / @second
+  end
+  erb (:calc)
+end
+
+get '/calc/form' do
+  @first = params[:first].to_f
+  @operation = params[:operation]
+  @second = params[:second].to_f
+  @result = case @operation
+  when "sum" then @first + @second
+  when "difference" then @first - @second
+  when "product" then @first  * @second
+  when "quotient" then @first / @second
+  end
+  erb (:calc_form)
 end
